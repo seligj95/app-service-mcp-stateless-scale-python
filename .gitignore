@@ -160,8 +160,10 @@ mcp.log
 *.tmp
 *.temp
 
-# Blog draft (lives in personal-squad until publish)
+# Blog draft + companion assets (live in personal-squad until publish)
 BLOG.md
+BLOG.html
+BANNER_PROMPT.md
 
 # OS specific
 *.pid
