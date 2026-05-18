@@ -44,8 +44,8 @@ FACTS: Dict[str, str] = {
     ),
     "mcp": (
         "The Model Context Protocol (MCP) is an open standard for exposing tools, "
-        "resources, and prompts to LLM clients. The 2025-06-18 revision supports "
-        "stateless HTTP transport for horizontally scaled deployments."
+        "resources, and prompts to LLM clients. Stateless HTTP transport was "
+        "formalized in 2025-06-18 and remains in the 2025-11-25 revision."
     ),
     "stateless-http": (
         "Stateless HTTP transport lets each MCP request stand on its own — any "
@@ -191,7 +191,7 @@ async def health():
     return {
         "status": "healthy",
         "service": "stateless-mcp-app-service",
-        "protocol_version": "2025-06-18",
+        "protocol_version": "2025-11-25",
         "instance_id": os.environ.get("WEBSITE_INSTANCE_ID", "local"),
         "slot_name": os.environ.get("WEBSITE_SLOT_NAME", "local"),
         "app_insights": _APP_INSIGHTS_ENABLED,
@@ -201,7 +201,7 @@ async def health():
 # ---------- MCP transport: stateless JSON-RPC over HTTP ----------
 def _server_info() -> Dict[str, Any]:
     return {
-        "protocolVersion": "2025-06-18",
+        "protocolVersion": "2025-11-25",
         "capabilities": {"tools": {"listChanged": False}},
         "serverInfo": {
             "name": "stateless-mcp-app-service",

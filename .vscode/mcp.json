@@ -1,7 +1,7 @@
 {
   "servers": {
     "stateless-mcp-app-service": {
-      "url": "https://app-web-b7eexoutkp2bi.azurewebsites.net/mcp",
+      "url": "http://localhost:8000/mcp",
       "type": "http"
     }
   },

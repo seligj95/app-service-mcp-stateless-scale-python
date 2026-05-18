@@ -3,7 +3,7 @@
 A reference implementation of a **stateless, horizontally scaled MCP server**,
 deployed behind Azure App Service's built-in load balancer.
 
-* **Stateless HTTP transport** (MCP `2025-06-18`) — any instance can serve any request
+* **Stateless HTTP transport** (MCP `2025-11-25`) — any instance can serve any request
 * **Three App Service instances** by default, no sticky sessions
 * **Staging deployment slot** for zero-downtime updates
 * **Application Insights** auto-instrumentation with per-instance request tagging
@@ -29,8 +29,7 @@ deployed behind Azure App Service's built-in load balancer.
 │   ├── k6-mcp.js                 # k6 script — tags hits per instance
 │   └── README.md
 ├── static/style.css
-├── templates/index.html          # Status page showing serving instance
-└── BLOG.md
+└── templates/index.html          # Status page showing serving instance
 ```
 
 ## MCP tools
@@ -122,7 +121,7 @@ Update `.vscode/mcp.json`:
                        ┌─────────────────────────────────────────┐
                        │       Azure App Service (P0v3 × 3)      │
                        │  ┌────────────┐ ┌────────────┐ ┌──────┐ │
-   MCP client ─── HTTP ─┤ ▶  instance0 │ │  instance1 │ │  …   │ │
+   MCP client ── HTTP ─┤ ▶  instance0  │ │  instance1 │ │  …   │ │
    (stateless,         │  └────────────┘ └────────────┘ └──────┘ │
     no cookies)        │     ▲ built-in load balancer ▲          │
                        │     │   clientAffinityEnabled=false     │
