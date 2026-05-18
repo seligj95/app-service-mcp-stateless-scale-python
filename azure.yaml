@@ -1,0 +1,15 @@
+# Azure Developer CLI configuration file
+# https://aka.ms/azure-dev-yaml
+
+name: app-service-mcp-stateless-scale-python
+metadata:
+  template: app-service-mcp-stateless-scale-python@0.0.1-beta
+
+services:
+  web:
+    project: .
+    host: appservice
+    language: python
+
+infra:
+  provider: bicep

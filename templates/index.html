@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stateless MCP Server · App Service</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Stateless MCP Server</h1>
+        <p class="tag">Horizontally scaled on Azure App Service</p>
+      </header>
+
+      <section class="card">
+        <h2>This response was served by</h2>
+        <dl>
+          <dt>Instance ID</dt>
+          <dd><code>{{ instance_id }}</code></dd>
+          <dt>Site</dt>
+          <dd><code>{{ site_name }}</code></dd>
+          <dt>Slot</dt>
+          <dd><code>{{ slot_name }}</code></dd>
+          <dt>Application Insights</dt>
+          <dd>
+            {% if app_insights_enabled %}
+              <span class="ok">enabled</span>
+            {% else %}
+              <span class="warn">not configured</span>
+            {% endif %}
+          </dd>
+        </dl>
+        <p class="hint">
+          Refresh a few times — if you've scaled out, the instance ID should
+          change. That's the load balancer at work.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>MCP endpoint</h2>
+        <p>
+          Stateless HTTP transport, JSON-RPC 2.0, protocol version
+          <code>2025-06-18</code>.
+        </p>
+        <pre><code>{{ mcp_url }}</code></pre>
+      </section>
+
+      <section class="card">
+        <h2>Tools</h2>
+        <ul class="tools">
+          {% for name, info in tools.items() %}
+            <li>
+              <code>{{ name }}</code> — {{ info.description }}
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <footer>
+        <p>
+          <a href="/health">/health</a> ·
+          <a href="/mcp">/mcp</a>
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
